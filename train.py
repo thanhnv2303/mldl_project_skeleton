@@ -1,6 +1,7 @@
 import torch
 from torchvision.datasets import ImageFolder
 import torchvision.transforms as T
+import wandb
 
 data_folder = "data"
 transform = T.Compose([
@@ -108,9 +109,14 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
 best_acc = 0
+wandb.init(project="lab2")
+
 
 # Run the training process for {num_epochs} epochs
 num_epochs = 10
+
+config = wandb.config
+config.num_epochs = num_epochs
 for epoch in range(1, num_epochs + 1):
     train(epoch, model, train_loader, criterion, optimizer)
 
@@ -119,5 +125,6 @@ for epoch in range(1, num_epochs + 1):
 
     # Best validation accuracy
     best_acc = max(best_acc, val_accuracy)
+    wandb.log({"val_accuracy": val_accuracy, "best_val_accuracy": best_acc})
 
 print(f'Best validation accuracy: {best_acc:.2f}%')
