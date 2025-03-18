@@ -9,4 +9,4 @@ with open(f'{data_folder}/tiny-imagenet-200/val/val_annotations.txt') as f:
 
         shutil.copyfile(f'{data_folder}/tiny-imagenet-200/val/images/{fn}', f'{data_folder}/tiny-imagenet-200/val/{cls}/{fn}')
 
-shutil.rmtree('{data_folder}/tiny-imagenet-200/val/images')
+shutil.rmtree(f'{data_folder}/tiny-imagenet-200/val/images')
