@@ -10,8 +10,8 @@ transform = T.Compose([
     T.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
 ])
 
-tiny_imagenet_dataset_train = ImageFolder(root='{data_folder}/tiny-imagenet-200/train', transform=transform)
-tiny_imagenet_dataset_val = ImageFolder(root='{data_folder}/tiny-imagenet-200/val', transform=transform)
+tiny_imagenet_dataset_train = ImageFolder(root=f'{data_folder}/tiny-imagenet-200/train', transform=transform)
+tiny_imagenet_dataset_val = ImageFolder(root=f'{data_folder}/tiny-imagenet-200/val', transform=transform)
 
 print(f"Length of train dataset: {len(tiny_imagenet_dataset_train)}")
 print(f"Length of val dataset: {len(tiny_imagenet_dataset_val)}")
